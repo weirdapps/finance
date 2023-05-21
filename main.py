@@ -11,7 +11,7 @@ df = pd.read_csv('/Users/plessas/Downloads/marketcap.csv')
 
 # convert the csv file to a list
 symbol_list = df['Symbol'].tolist()
-symbol_list = symbol_list[0:50]
+symbol_list = symbol_list[0:20]
 
 # connect to yahoo finance and download daily adjusted close prices for symbol_list
 data = yf.download(symbol_list, start="2000-01-01", end="2023-05-20")

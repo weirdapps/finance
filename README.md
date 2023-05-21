@@ -1,2 +1,3 @@
 # finance
-sharpe ratio and efficient frontier
+
+sharpe ratio and efficient frontier calculation
