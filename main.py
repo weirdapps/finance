@@ -1,7 +1,7 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import yfinance as yf
+import matplotlib.pyplot as plt
 from scipy.optimize import minimize
 
 # Set the file path for the CSV
@@ -14,7 +14,7 @@ df = pd.read_csv(csv_path)
 symbol_list = df['Symbol'].tolist()[:20]
 
 # Download daily adjusted close prices for symbol_list from Yahoo Finance
-data = yf.download(symbol_list, start="2021-01-01",
+data = yf.download(symbol_list, start="2020-01-01",
                    end="2023-05-20")["Adj Close"]
 
 # Calculate the daily returns
