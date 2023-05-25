@@ -11,10 +11,10 @@ csv_path = 'marketcap.csv'
 df = pd.read_csv(csv_path)
 
 # Select the symbol column and convert it to a list
-symbol_list = df['Symbol'].tolist()[:20]
+symbol_list = df['Symbol'].tolist()[:50]
 
 # Download daily adjusted close prices for symbol_list from Yahoo Finance
-data = yf.download(symbol_list, start="2000-01-01",
+data = yf.download(symbol_list, start="2020-01-01",
                    end="2023-05-20")["Adj Close"]
 
 # Calculate the daily returns
@@ -90,3 +90,14 @@ ret, vol, sr = get_ret_vol_sr(opt_results.x, daily_returns)
 print('Expected Annual Return:', round(ret * 100, 2), '%')
 print('Annual Volatility:', round(vol * 100, 2), '%')
 print('Sharpe Ratio:', round(sr, 2))
+
+# Plot the equity value of the portfolio with the optimal weights
+portfolio_value = 100000
+portfolio_returns = (daily_returns * opt_results.x).sum(axis=1)
+portfolio_cumulative_returns = (portfolio_returns + 1).cumprod()
+portfolio_equity_value = portfolio_cumulative_returns * portfolio_value
+portfolio_equity_value.plot(figsize=(12, 8))
+plt.title('Portfolio Equity Value')
+plt.xlabel('Date')
+plt.ylabel('Equity Value ($)')
+plt.show()
