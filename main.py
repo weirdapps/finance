@@ -11,11 +11,11 @@ csv_path = 'marketcap.csv'
 df = pd.read_csv(csv_path)
 
 # Select the symbol column and convert it to a list
-symbol_list = df['Symbol'].tolist()[:50]
+symbol_list = df['Symbol'].tolist()[:99]
 
 # Download daily adjusted close prices for symbol_list from Yahoo Finance
-data = yf.download(symbol_list, start="2020-01-01",
-                   end="2023-05-20")["Adj Close"]
+data = yf.download(symbol_list, start="2022-01-01",
+                   end="2023-06-01")["Adj Close"]
 
 # Calculate the daily returns
 daily_returns = data.pct_change()
@@ -84,6 +84,9 @@ optimal_weights.sort_values(
 
 # Print the table of optimal weights
 print(optimal_weights)
+
+# Write the table of optimal weights to a CSV file
+optimal_weights.to_csv('optimal_weights.csv')
 
 # Print the expected annual return, annual volatility, and Sharpe ratio
 ret, vol, sr = get_ret_vol_sr(opt_results.x, daily_returns)
