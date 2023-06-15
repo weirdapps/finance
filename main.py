@@ -11,10 +11,10 @@ csv_path = 'marketcap.csv'
 df = pd.read_csv(csv_path)
 
 # Select the symbol column and convert it to a list
-symbol_list = df['Symbol'].tolist()[:99]
+symbol_list = df['Symbol'].tolist()[:20]
 
 # Download daily adjusted close prices for symbol_list from Yahoo Finance
-data = yf.download(symbol_list, start="2022-01-01",
+data = yf.download(symbol_list, start="1990-01-01",
                    end="2023-06-01")["Adj Close"]
 
 # Calculate the daily returns
