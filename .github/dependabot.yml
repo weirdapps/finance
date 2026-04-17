@@ -1,6 +1,4 @@
 version: 2
-updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
+# No active ecosystems: this repo has no GitHub Actions workflows and no
+# requirements.txt yet. Re-enable an ecosystem when one of those is added.
+updates: []
